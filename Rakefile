@@ -15,6 +15,7 @@ rescue LoadError
 end
 
 require "bundler_task"
+require "ci_task"
 
 gem_helper = Bundler::GemHelper.new(Dir.pwd)
 
