@@ -5,6 +5,7 @@ require "bundler"
 Bundler.setup(:default, :test)
 
 require "rspec"
+require 'ruby-debug'
 
 require 'cloud'
 require 'cloud/cloudstack'
