@@ -1,9 +1,5 @@
-module Bosh::CloudStackCloud
-  module Api
-
-    class Base
-      
-    end
+module Bosh::CloudStackCloud::Api
+  class Base
     
   end
 end
