@@ -13,7 +13,8 @@ require "common/thread_pool"
 require "common/thread_formatter"
 
 require "cloud/cloudstack/cloud"
-require "cloud/cloudstack/api/base"
+require 'cloud/cloudstack/errors'
+require "cloud/cloudstack/api"
 module Bosh
   module Clouds
     CloudStack = Bosh::CloudStackCloud::Cloud
