@@ -6,14 +6,12 @@ module Bosh::CloudStackCloud
         parse_list response
       end
 
-
-      private
-
       def request request_name
         set_connection
-        @connection.send(request_name.to_sym)
+        @connection.send(request_name)
       end
 
+      private
       def parse_list data
         # {"listvirtualmachinesresponse" => {"count" => "", "virtualmachine" => ""}
 
