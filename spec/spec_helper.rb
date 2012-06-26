@@ -27,6 +27,9 @@ Bosh::Clouds::Config.configure(config)
 RSpec.configure do |config|
   config.before(:each) do
    Fog.mock!
-   Bosh::CloudStackCloud::Api.break_connection
+   Fog::Mock.reset
   end
+end
+def create_connection_to_cloudstack
+  Bosh::CloudStackCloud::Api.authorize({cloudstack_host: 'test.host', cloudstack_api_key: 'test', cloudstack_secret_access_key: 'test'})
 end
