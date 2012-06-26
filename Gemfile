@@ -4,7 +4,7 @@ source :rubygems
 gemspec
 
 gem "rake"
-gem "fog", "~>1.3.1"
+gem "fog", "~>1.4.0"
 group :development do
   gem "guard"
   gem "guard-bundler"
