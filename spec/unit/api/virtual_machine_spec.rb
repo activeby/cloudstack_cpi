@@ -5,8 +5,9 @@ describe VirtualMachine do
   describe 'class methods' do
     let(:virtual_machines){[{"id" => 1}, {"id" => 2}]}
     before do
-      Requestor.stub(:request).with(:list_virtual_machines).and_return virtual_machines
+      FogRequestor.stub(:list).with(:virtual_machines).and_return virtual_machines
     end
+
     describe '#all' do
       it 'return array of vm' do
         subject.all.should == virtual_machines
@@ -18,5 +19,9 @@ describe VirtualMachine do
         subject.get(1).should == virtual_machines.first
       end
     end
+  end
+
+  describe 'instance methods' do
+    
   end
 end

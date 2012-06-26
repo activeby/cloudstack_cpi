@@ -1,10 +1,10 @@
 module Bosh::CloudStackCloud::Api
   class VirtualMachine < Base
     def self.all
-      Requestor.request :list_virtual_machines
+      FogRequestor.list :virtual_machines
     end
     def self.get id
-      Requestor.request(:list_virtual_machines).find{|params| params['id']==id}
+      self.all.find{|params| params['id'] == id}
     end
   end
 end
