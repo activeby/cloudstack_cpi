@@ -19,6 +19,10 @@ describe VirtualMachine do
         subject.get(1).should == virtual_machines.first
       end
     end
+
+    describe '#deploy' do
+      
+    end
   end
 
   describe 'instance methods' do
