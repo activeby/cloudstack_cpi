@@ -6,16 +6,17 @@ module Bosh::CloudStackCloud
         parse_list response
       end
 
-      def request request_name
+      def request request_name, params = {}
+        #{"request_nameresponse" => {}}
         set_connection
-        @connection.send(request_name)
+        response = @connection.send(request_name, params)
+        response.values.first
       end
 
       private
       def parse_list data
-        # {"listvirtualmachinesresponse" => {"count" => "", "virtualmachine" => ""}
-
-        data.values[0].values[1]
+        # {"count" => "", "virtualmachine" => ""}
+        data.values[1]
       end
 
       def set_connection
