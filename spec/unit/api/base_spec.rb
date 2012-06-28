@@ -1,5 +1,6 @@
 require 'spec_helper'
 include Bosh::CloudStackCloud
+
 describe Api::Base do
   let(:subject){Api::Base}
 
@@ -12,6 +13,6 @@ describe Api::Base do
     it 'return data by call indexer' do
       item[:param].should == :value
     end
-    
+
   end
 end

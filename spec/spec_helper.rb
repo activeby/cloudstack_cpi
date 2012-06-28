@@ -9,10 +9,7 @@ require 'ruby-debug'
 
 require 'cloud'
 require 'cloud/cloudstack'
-require 'cloud/cloudstack/api'
-require 'cloud/cloudstack/errors'
 
-require 'fog'
 
 class CloudStackSpecConfig
   attr_accessor :logger, :uuid
