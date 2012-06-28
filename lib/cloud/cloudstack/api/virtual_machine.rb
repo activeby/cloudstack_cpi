@@ -7,8 +7,8 @@ module Bosh::CloudStackCloud::Api
       self.all.find{|params| params['id'] == id}
     end
     def self.deploy options
-      FogRequestor.deploy_virtual_machine options
-      
+      data = FogRequestor.request(:deploy_virtual_machine, options)
+      new data
     end
   end
 end

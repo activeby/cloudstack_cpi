@@ -2,6 +2,9 @@ require 'spec_helper'
 include Bosh::CloudStackCloud::Api
 describe VirtualMachine do
   let(:subject){VirtualMachine}
+  before do
+    create_connection_to_cloudstack
+  end
   describe 'class methods' do
     let(:virtual_machines){[{"id" => 1}, {"id" => 2}]}
     before do
@@ -21,7 +24,14 @@ describe VirtualMachine do
     end
 
     describe '#deploy' do
-      
+      let(:deploy_parameters){{
+        'zoneid' => 'c554c592-e09c-9df5-7688-4a32754a4305',
+        'templateid' => '8a31cf9c-f248-0588-256e-9dbf58785216',
+        'serviceofferingid' => '4437ac6c-9fe3-477a-57ec-60a5a45896a4'
+        }}
+      it 'return a vm instance' do
+        subject.deploy(deploy_parameters).should be_instance_of VirtualMachine
+      end
     end
   end
 
