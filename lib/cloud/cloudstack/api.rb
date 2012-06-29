@@ -1,3 +1,4 @@
+require "cloud/cloudstack/api/errors"
 require "cloud/cloudstack/api/base"
 require "cloud/cloudstack/api/requestor"
 require "cloud/cloudstack/api/virtual_machine"
