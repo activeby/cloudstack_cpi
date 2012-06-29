@@ -38,6 +38,10 @@ describe VirtualMachine do
   end
 
   describe 'instance methods' do
-    
+    describe '#attach_volume' do
+      it '' do
+        
+      end
+    end
   end
 end
