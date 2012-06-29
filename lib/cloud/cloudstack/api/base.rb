@@ -11,11 +11,11 @@ module Bosh::CloudStackCloud::Api
     def self.request name, options
       new.request name, options
     end
+
     def request name, options
       FogRequestor.request name, options
     end
     private
-
 
     def method_missing(method_name, *args, &block)
       @data[method_name.to_s] || @data[method_name.to_sym]
