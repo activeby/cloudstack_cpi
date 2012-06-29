@@ -31,8 +31,8 @@ describe VirtualMachine do
         subject.deploy deploy_parameters
       end
 
-      it 'return a vm instance' do
-        subject.deploy(deploy_parameters).should be_instance_of VirtualMachine
+      it 'return instance of self' do
+        subject.deploy(deploy_parameters).should be_instance_of subject
       end
     end
   end
