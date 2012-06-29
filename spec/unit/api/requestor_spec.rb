@@ -3,9 +3,6 @@ include Bosh::CloudStackCloud::Api
 
 describe FogRequestor do
   let(:subject){FogRequestor}
-  before do
-    create_connection_to_cloudstack
-  end
   describe '#list' do
     it 'send correct list request' do
       subject.stub(:parse_list).and_return []

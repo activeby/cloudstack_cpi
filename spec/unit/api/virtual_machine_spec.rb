@@ -2,9 +2,6 @@ require 'spec_helper'
 include Bosh::CloudStackCloud::Api
 describe VirtualMachine do
   let(:subject){VirtualMachine}
-  before do
-    create_connection_to_cloudstack
-  end
   describe 'class methods' do
     let(:virtual_machines){[{"id" => 1}, {"id" => 2}]}
     before do
@@ -29,8 +26,13 @@ describe VirtualMachine do
         'templateid' => '8a31cf9c-f248-0588-256e-9dbf58785216',
         'serviceofferingid' => '4437ac6c-9fe3-477a-57ec-60a5a45896a4'
         }}
-      it 'return a vm instance' do
-        subject.deploy(deploy_parameters).should be_instance_of VirtualMachine
+      it 'send request to fog' do
+        Api.connection.should_receive(:deploy_virtual_machine).with(deploy_parameters).and_return empty_fog_response
+        subject.deploy deploy_parameters
+      end
+
+      it 'return instance of self' do
+        subject.deploy(deploy_parameters).should be_instance_of subject
       end
     end
   end

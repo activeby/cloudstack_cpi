@@ -1,6 +1,7 @@
 require "cloud/cloudstack/api/base"
 require "cloud/cloudstack/api/requestor"
 require "cloud/cloudstack/api/virtual_machine"
+require "cloud/cloudstack/api/volume"
 module Bosh::CloudStackCloud::Api
   require 'fog'
 

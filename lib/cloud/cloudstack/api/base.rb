@@ -11,7 +11,7 @@ module Bosh::CloudStackCloud::Api
     private
 
     def method_missing(method_name, *args, &block)
-      @data[method_name] || @data[method_name.to_sym]
+      @data[method_name.to_s] || @data[method_name.to_sym]
     end
 
   end
