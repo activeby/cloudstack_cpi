@@ -4,5 +4,15 @@ module Bosh::CloudStackCloud::Api
       response = FogRequestor.request(:create_volume, params)
       new response
     end
+
+    def self.all
+      result = FogRequestor.list(:volumes)
+      result.map{|data| new data}
+    end
+
+    def self.get id
+      self.all.find{|volume| volume.id == id}
+    end
+
   end
 end

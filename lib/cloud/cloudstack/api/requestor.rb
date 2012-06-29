@@ -15,7 +15,7 @@ module Bosh::CloudStackCloud
       private
       def parse_list data
         # {"count" => "", "virtualmachine" => ""}
-        data.values[1]
+        data.values.last
       end
 
       def connection
