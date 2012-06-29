@@ -8,8 +8,7 @@ module Bosh::CloudStackCloud
 
       def request request_name, params = {}
         #{"request_nameresponse" => {}}
-        set_connection
-        response = @connection.send(request_name, params)
+        response = connection.send(request_name, params)
         response.values.first
       end
 
@@ -19,8 +18,8 @@ module Bosh::CloudStackCloud
         data.values[1]
       end
 
-      def set_connection
-        @connection ||= Api.connection
+      def connection
+        Api.connection
       end
     end
   end

@@ -2,10 +2,6 @@ require 'spec_helper'
 include Bosh::CloudStackCloud::Api
 describe VirtualMachine do
   let(:subject){VirtualMachine}
-  let(:empty_fog_response){{'fogresponse' => {}}}
-  before do
-    create_connection_to_cloudstack
-  end
   describe 'class methods' do
     let(:virtual_machines){[{"id" => 1}, {"id" => 2}]}
     before do
