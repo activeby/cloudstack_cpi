@@ -44,6 +44,13 @@ describe VirtualMachine do
     let(:instance){subject.get('virtualmachine-1')}
     let(:volume){Volume.new({'id' => 'volume-1'})}
 
+    describe '#destroy!' do
+      it 'send fog request' do
+        Api.connection.should_receive(:destroy_virtual_machine).and_return empty_fog_response
+        instance.destroy!
+      end
+    end
+
     describe '#attach_volume' do
       it 'send fog request' do
         Api.connection.should_receive(:attach_volume).and_return empty_fog_response

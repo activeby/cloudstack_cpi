@@ -12,6 +12,10 @@ module Bosh::CloudStackCloud::Api
       new data
     end
 
+    def destroy!
+      request :destroy_virtual_machine, 'id' => self.id
+    end
+
     def attach_volume volume
       params = volume_params volume
       request :attach_volume, params
@@ -21,7 +25,7 @@ module Bosh::CloudStackCloud::Api
       params = volume_params volume
       request :detach_volume, params
     end
-    
+
     private
     def volume_params volume
       raise(IncorrectParameters,
