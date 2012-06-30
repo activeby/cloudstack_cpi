@@ -15,4 +15,8 @@ module Bosh::CloudStackCloud::Api
     end
 
   end
+
+  def delete
+    request :delete_volume, {'id' => self.id}
+  end
 end
