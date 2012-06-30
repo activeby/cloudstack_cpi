@@ -13,13 +13,23 @@ module Bosh::CloudStackCloud::Api
     end
 
     def attach_volume volume
+      params = volume_params volume
+      request :attach_volume, params
+    end
+
+    def detach_volume volume
+      params = volume_params volume
+      request :detach_volume, params
+    end
+    
+    private
+    def volume_params volume
       raise(IncorrectParameters,
        'expected that argument should be an instance of a Volume class') unless volume.class == Volume
       params = {
         'virtualmachineid' => self.id,
         'id' => volume.id
       }
-      request :attach_volume, params
     end
   end
 end

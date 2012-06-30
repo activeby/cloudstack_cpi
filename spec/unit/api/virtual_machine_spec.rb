@@ -42,9 +42,9 @@ describe VirtualMachine do
 
   describe 'instance methods' do
     let(:instance){subject.get('virtualmachine-1')}
+    let(:volume){Volume.new({'id' => 'volume-1'})}
+
     describe '#attach_volume' do
-      let(:volume){Volume.new({'id' => 'volume-1'})}
-        
       it 'send fog request' do
         Api.connection.should_receive(:attach_volume).and_return empty_fog_response
         instance.attach_volume(volume)
@@ -55,8 +55,24 @@ describe VirtualMachine do
         end
         instance.attach_volume(volume)
       end
-      it 'raise error if volume is not a instance of Volume object' do
+      it 'raise error if volume argument is not a instance of Volume object' do
         expect{ instance.attach_volume({}) }.should raise_error Bosh::CloudStackCloud::Api::IncorrectParameters
+      end
+    end
+
+    describe '#detach_volume' do
+      it 'send fog request' do
+        Api.connection.should_receive(:detach_volume).and_return empty_fog_response
+        instance.detach_volume(volume)
+      end
+      it 'add id of self, and id of disk in request' do
+        instance.should_receive(:request) do |name, options|
+          options.should == {'virtualmachineid' => instance.id, 'id' => volume.id}
+        end
+        instance.detach_volume(volume)
+      end
+      it 'raise error if volume argument is not a instance of Volume object' do
+        expect{ instance.detach_volume({}) }.should raise_error Bosh::CloudStackCloud::Api::IncorrectParameters
       end
     end
   end
