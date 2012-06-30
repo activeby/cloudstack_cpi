@@ -37,10 +37,10 @@ describe Volume do
   end
   describe 'instance methods' do
     let(:instance){subject.get('volume-1')} 
-    describe '#delete' do
+    describe '#delete!' do
       it 'send request to fog' do
         Api.connection.should_receive(:delete_volume).and_return empty_fog_response
-        instance.delete
+        instance.delete!
       end
     end
   end
