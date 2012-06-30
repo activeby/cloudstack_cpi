@@ -51,6 +51,13 @@ describe VirtualMachine do
       end
     end
 
+    describe '#reboot!' do
+      it 'send fog request' do
+        Api.connection.should_receive(:reboot_virtual_machine).and_return empty_fog_response
+        instance.reboot!
+      end
+    end
+
     describe '#attach_volume' do
       it 'send fog request' do
         Api.connection.should_receive(:attach_volume).and_return empty_fog_response

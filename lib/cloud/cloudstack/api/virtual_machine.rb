@@ -16,6 +16,10 @@ module Bosh::CloudStackCloud::Api
       request :destroy_virtual_machine, 'id' => self.id
     end
 
+    def reboot!
+      request :reboot_virtual_machine, 'id' => self.id
+    end
+
     def attach_volume volume
       params = volume_params volume
       request :attach_volume, params
