@@ -4,7 +4,7 @@ include Bosh::CloudStackCloud
 describe Api::Base do
   let(:subject){Api::Base}
 
-  describe '#method_missing' do
+  context 'method_missing' do
     let(:item){subject.new({:param => :value})}
 
     it 'return data by call instance method' do
