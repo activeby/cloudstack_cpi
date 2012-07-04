@@ -8,12 +8,13 @@ module Bosh::CloudStackCloud::Api
       @data[key.to_s] || @data[key.to_sym]
     end
 
-    def self.request name, options
+
+    def self.request name, options = {}
       new.request name, options
     end
 
     def request name, options
-      FogRequestor.request name, options
+      FogRequestor.request(name, options)
     end
     private
 

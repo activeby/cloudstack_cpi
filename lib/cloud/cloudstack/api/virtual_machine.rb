@@ -1,7 +1,7 @@
 module Bosh::CloudStackCloud::Api
   class VirtualMachine < Base
     def self.all
-      result = FogRequestor.list(:virtual_machines)
+      result = request(:list_virtual_machines)
       result.map{|data| new data}
     end
     def self.get id

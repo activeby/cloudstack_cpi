@@ -1,12 +1,12 @@
 module Bosh::CloudStackCloud::Api
   class Volume < Base
     def self.create params
-      response = FogRequestor.request(:create_volume, params)
+      response = request(:create_volume, params)
       new response
     end
 
     def self.all
-      result = FogRequestor.list(:volumes)
+      result = request(:list_volumes)
       result.map{|data| new data}
     end
 

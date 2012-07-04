@@ -1,21 +1,17 @@
 module Bosh::CloudStackCloud
   class Api::FogRequestor
     class << self
-      def list request_name
-        response = request "list_#{request_name}"
-        parse_list response
-      end
 
       def request request_name, params = {}
-        #{"request_nameresponse" => {}}
         response = connection.send(request_name, params)
-        response.values.first
+        extract_data_from_response response
       end
 
       private
-      def parse_list data
-        # {"count" => "", "virtualmachine" => ""}
-        data.values.last
+
+      def extract_data_from_response response
+        #{"request_nameresponse" => {}}
+        response.values.last
       end
 
       def connection
