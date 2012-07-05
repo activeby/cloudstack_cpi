@@ -14,9 +14,8 @@ module Bosh::CloudStackCloud::Api
       self.all.find{|volume| volume.id == id}
     end
 
-  end
-
-  def delete!
-    request :delete_volume, {'id' => self.id}
+    def delete!
+      request :delete_volume, {'id' => self.id}
+    end
   end
 end
